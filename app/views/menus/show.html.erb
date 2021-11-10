@@ -1,0 +1,8 @@
+<div>
+
+  <%= attachment_image_tag @menu, :image %>
+  <p>ショップ名：<%= @menu.title %></p>
+  <p>説明：<%= @menu.body %></p>
+  <%= link_to "編集する",edit_menu_path(@menu) %>
+  <%= link_to "削除する",menu_path(@menu),method: :delete %>
+</div>
