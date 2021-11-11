@@ -9,16 +9,29 @@
       <table class="table">
         <p>ショップ名：<%= @menu.title %></p>
         <p>説明：<%= @menu.body %></p>
+        <% if @menu.favorited_by?(current_user) %>
+        <p>
+          <%= link_to menu_likes_path(@menu), method: :delete do %>
+            ♥<%= @menu.likes.count %> いいね
+          <% end %>
+        </p>
+        <% else %>
+        <p>
+            <%= link_to menu_likes_path(@menu), method: :post do %>
+              ♡<%= @menu.likes.count %> いいね
+            <% end %>
+          </p>
+        <% end %>
         <%= link_to "編集する",edit_menu_path(@menu) %>
         <%= link_to "削除する",menu_path(@menu),method: :delete %>
       </table>
     </div>
     <% @menu.comments.each do |comment| %>
-      <%= comment.user.name %>
-      <%= comment.comment %>
+      <%= comment.comm %>
+      <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete %>
     <% end %>
     <%= form_with(model:[@menu, @comment], local: true) do |f| %>
-      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
       <%= f.submit "送信する" %>
     <% end %>
   </div>
