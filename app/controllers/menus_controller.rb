@@ -16,6 +16,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -23,6 +24,9 @@ class MenusController < ApplicationController
   end
 
   def update
+    @menu = Menu.find(params[:id])
+    @menu.update(menu_params)
+    redirect_to menu_path(@menu)
   end
 
   def destroy

@@ -6,6 +6,7 @@
       <%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
       <p><%= menu.title %></p>
       <% end %>
+      コメント件数：<%= menu.comments.count %>
     </div>
     <% end %>
   </div>

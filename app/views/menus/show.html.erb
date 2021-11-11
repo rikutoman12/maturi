@@ -1,8 +1,25 @@
-<div>
-
-  <%= attachment_image_tag @menu, :image %>
-  <p>ショップ名：<%= @menu.title %></p>
-  <p>説明：<%= @menu.body %></p>
-  <%= link_to "編集する",edit_menu_path(@menu) %>
-  <%= link_to "削除する",menu_path(@menu),method: :delete %>
+<div class="container">
+　<div class="row">
+　  <div class="col-7">
+  　  <table class="table">
+          <%= attachment_image_tag @menu, :image,:fill, 550, 400 %>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table">
+        <p>ショップ名：<%= @menu.title %></p>
+        <p>説明：<%= @menu.body %></p>
+        <%= link_to "編集する",edit_menu_path(@menu) %>
+        <%= link_to "削除する",menu_path(@menu),method: :delete %>
+      </table>
+    </div>
+    <% @menu.comments.each do |comment| %>
+      <%= comment.user.name %>
+      <%= comment.comment %>
+    <% end %>
+    <%= form_with(model:[@menu, @comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
 </div>
