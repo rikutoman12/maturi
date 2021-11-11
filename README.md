@@ -16,7 +16,8 @@
 お祭りの情報を追加したい場合、祭り好き同士つながり合いたい時、お祭りの日程の把握したい時など。
 
 ## 設計書
-<...>
+https://docs.google.com/spreadsheets/d/1a3xYFDb5DGgs2j3DTlNNp2A82LMwlnF2DvbZC8gTZ00/edit?usp=sharing
+https://drive.google.com/file/d/1cBtnv1tzn6nS7p6NGyZ6ClV_x3uKa1JO/view?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1oZXghnbpBliquJidbwWW2yqHnMcIw5iSADu14QrpbbQ/edit?usp=sharing
