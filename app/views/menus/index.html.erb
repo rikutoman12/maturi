@@ -5,7 +5,7 @@
       <%= link_to menu_path(menu) do %>
       <%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
       <div class="text-center">
-      <p><%= menu.title %></p>
+        <p><%= menu.title %></p>
       </div>
       <% end %>
       コメント：<%= menu.comments.count %>

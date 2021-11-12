@@ -3,11 +3,15 @@
    <div class="col-7">
     <table class="table">
           <%= attachment_image_tag @menu, :image,:fill, 550, 400 %>
-      </table>
+    </table>
+          <% @menu.comments.each do |comment| %>
+            <%= comment.comm %>
+            <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete %>
+          <% end %>
     </div>
     <div class="col-4">
       <table class="table">
-        <p>ショップ名：<%= @menu.title %></p>
+        <p>題名：<%= @menu.title %></p>
         <p>説明：<%= @menu.body %></p>
         <% if @menu.liked_by?(current_user) %>
         <p>
@@ -24,15 +28,11 @@
         <% end %>
         <%= link_to "編集する",edit_menu_path(@menu) %>
         <%= link_to "削除する",menu_path(@menu),method: :delete %>
+        <%= form_with(model:[@menu, @comment], local: true) do |f| %>
+          <p><%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %></p>
+          <%= f.submit "送信する" %>
+        <% end %>
       </table>
     </div>
-    <% @menu.comments.each do |comment| %>
-      <%= comment.comm %>
-      <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete %>
-    <% end %>
-    <%= form_with(model:[@menu, @comment], local: true) do |f| %>
-      <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
   </div>
 </div>
