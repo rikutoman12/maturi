@@ -1,3 +1,17 @@
-<% @likes.each do |like|%>
-<%= menu = menu.find_by(id: like.menu_id) %>
-<% end %>
+<div class=container>
+  <div class="row">
+    <% @liked.each do |like|%>
+      <div class ="m-2">
+         <%= link_to menu_path(like) do %>
+            <%= attachment_image_tag like, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
+              <div class="text-center">
+                <p><%= like.title %></p>
+              </div>
+          <% end %>
+              コメント：<%= like.comments.count %>
+              お気に入り:<%= like.likes.count %>
+
+    <% end %>
+  </div>
+</div>
+
