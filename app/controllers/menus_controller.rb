@@ -5,6 +5,7 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
+    @menu.user_id = current_user.id
     @menu.save
     redirect_to menus_path
   end
@@ -30,12 +31,12 @@ class MenusController < ApplicationController
 
   def destroy
     @menu = Menu.find(params[:id])
-    @menu = destroy
+    @menu.destroy
     redirect_to menus_path
   end
 
   private
   def menu_params
-     params.require(:menu).permit(:title,:body,:user_id,:image)
+     params.require(:menu).permit(:title,:body,:user_id,:image,:menu_id)
   end
 end
