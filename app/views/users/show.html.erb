@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class= "col-3 mt-5">
+    <div class= "col-4 mt-5">
       <div class="text-center">
         <p><%= attachment_image_tag @user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg",size:'300x300'%></p>
         <p><%= @user.name %></p>
@@ -8,8 +8,16 @@
         <p><%= link_to '編集する',edit_user_path(@user) %></p>
       </div>
     </div>
-    <div class="col-9 mt-5">
-      
+    <div class="col-7 mt-5">
+      <table class="table">
+       <% @menus.each do |menu| %>
+       <tr>
+         <td><%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %></td>
+         <td><%= menu.title %></td>
+         <td><%= menu.body %></td>
+         </tr>
+
+       <% end %>
     </div>
   </div>
 </div>
