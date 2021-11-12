@@ -6,18 +6,18 @@
         <p><%= @user.name %></p>
         <p><%= @user.introduction %></p>
         <p><%= link_to '編集する',edit_user_path(@user) %></p>
+        <p><%= link_to 'いいね一覧',likes_user_path(@user) %></p>
       </div>
     </div>
     <div class="col-7 mt-5">
       <table class="table">
-       <% @menus.each do |menu| %>
-       <tr>
-         <td><%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %></td>
-         <td><%= menu.title %></td>
-         <td><%= menu.body %></td>
-         </tr>
-
-       <% end %>
-    </div>
+         <% @menus.each do |menu| %>
+          <%= link_to menu_path(menu) do %>
+            <p><%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %></p>
+            <p><%= menu.title %></p>
+          <% end %>
+            <p><%= menu.body %></p>
+          </div>
+         <% end %>
   </div>
 </div>
