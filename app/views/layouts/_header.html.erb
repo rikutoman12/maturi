@@ -16,9 +16,9 @@
                   <%= submit_tag '検索' %>
                 <% end %>
             </li>
+            <li><%= link_to ' 一覧画面',menus_path ,class: 'fas fa-book-open nav-link text-light ml-5'%></li>
             <li><%= link_to '投稿画面',new_menu_path,class:'fas fa-users nav-link text-light' %></li>
             <li><%= link_to 'マイページ',user_path(current_user.id),class: 'fas fa-users nav-link text-light' %></li>
-            <li><%= link_to ' 一覧画面',menus_path ,class: 'fas fa-book-open nav-link text-light'%></li>
             <li><%= link_to ' logout', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
              </ul>
         </div>

@@ -13,19 +13,9 @@
       <table class="table">
         <p>題名：<%= @menu.title %></p>
         <p>説明：<%= @menu.body %></p>
-        <% if @menu.liked_by?(current_user) %>
-        <p>
-          <%= link_to menu_like_path(@menu), method: :delete do %>
-            ♥<%= @menu.likes.count %> いいね
-          <% end %>
+        <p id="like_buttons_<%= @menu.id %>">
+          <%= render "likes/like", menu: @menu %>
         </p>
-        <% else %>
-        <p>
-            <%= link_to menu_likes_path(@menu), method: :post do %>
-              ♡<%= @menu.likes.count %> いいね
-            <% end %>
-          </p>
-        <% end %>
         <%= link_to "編集する",edit_menu_path(@menu) %>
         <%= link_to "削除する",menu_path(@menu),method: :delete %>
         <%= form_with(model:[@menu, @comment], local: true) do |f| %>
