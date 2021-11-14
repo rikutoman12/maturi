@@ -1,0 +1,9 @@
+<% menu.comments.each do |comment| %>
+  <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
+  <%= comment.user.name %>
+  <%= comment.comm %>
+  <% if comment.user == current_user %>
+        <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true %>
+  <% else %>
+  <% end %>
+<% end %>

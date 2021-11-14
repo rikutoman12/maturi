@@ -1,28 +1,32 @@
 <div class="container">
- <div class="row">
-   <div class="col-7">
-    <table class="table">
-          <%= attachment_image_tag @menu, :image,:fill, 550, 400 %>
-    </table>
-          <% @menu.comments.each do |comment| %>
-            <%= comment.comm %>
-            <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete %>
-          <% end %>
+   <div class="row">
+       <div class="col-7 mt-5">
+          <table class="table">
+              <%= attachment_image_tag @menu, :image,:fill, 550, 400 %>
+          </table>
+          </div>
+          <div class="col-4 mt-5">
+            <p>
+              投稿者: <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
+              <%= @menu.user.name %>
+            </p>
+            <p>題名：<%= @menu.title %></p>
+            <p>説明：<%= @menu.body %></p>
+            <p id='lik<%= @menu.id %>'>
+                <%= render "likes/like", menu: @menu %>
+            </p>
+            <% if @menu.user == current_user %>
+                      <%= link_to "編集する",edit_menu_path(@menu) %>
+                      <%= link_to "削除する",menu_path(@menu),method: :delete %>
+            <% else %>
+            <% end %>
+            <p id="comment_a_">
+                <%= render "comments/comment", menu: @menu,comment: @comment %>
+            </p>
+            <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+              <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+              <%= f.submit "送信する" %>
+            <% end %>
+        </div>
     </div>
-    <div class="col-4">
-      <table class="table">
-        <p>題名：<%= @menu.title %></p>
-        <p>説明：<%= @menu.body %></p>
-        <p id="like_buttons_<%= @menu.id %>">
-          <%= render "likes/like", menu: @menu %>
-        </p>
-        <%= link_to "編集する",edit_menu_path(@menu) %>
-        <%= link_to "削除する",menu_path(@menu),method: :delete %>
-        <%= form_with(model:[@menu, @comment], local: true) do |f| %>
-          <p><%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %></p>
-          <%= f.submit "送信する" %>
-        <% end %>
-      </table>
-    </div>
-  </div>
 </div>

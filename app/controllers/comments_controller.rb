@@ -4,12 +4,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.menu_id = @menu.id
     @comment.save
-    redirect_to menu_path(@menu)
   end
 
   def destroy
     Comment.find_by(id: params[:id]).destroy
-    redirect_to menu_path(params[:menu_id])
+    @menu = Menu.find(params[:menu_id])
   end
 
   private
