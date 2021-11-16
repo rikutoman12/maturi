@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="mt-3">
+    <div class="text-center mt-3">
       <h2>詳細画面</h2>
     </div>
      <div class="row">
@@ -60,27 +60,44 @@
               </table>
           </div>
             <div class="col-4 mt-3">
-              <p>
-                投稿者: <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
-                <%= @menu.user.name %>
-              </p>
-              <p>題名：<%= @menu.title %></p>
-              <p>説明：<%= @menu.body %></p>
-              <p id='lik<%= @menu.id %>'>
-                  <%= render "likes/like", menu: @menu %>
-              </p>
-              <% if @menu.user == current_user %>
-                        <%= link_to "編集する",edit_menu_path(@menu) %>
-                        <%= link_to "削除する",menu_path(@menu),method: :delete %>
-              <% else %>
-              <% end %>
-              <div id="comment_a_">
-                  <%= render "comments/comment", menu: @menu,comment: @comment %>
-              </div>
-              <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-                <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-              <% end %>
+               <table  class="table table-bordered text-center" >
+                 <thead>
+                    <tr>
+                      <th>投稿者</th>
+                      <td>
+                        <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
+                        <%= @menu.user.name %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>題名</th>
+                      <td><%= @menu.title %></td>
+                    </tr>
+
+                      <th>説明</th>
+                      <td><%= @menu. body %></td>
+                  </thead>
+                  <tbody>
+                      <% if @menu.user == current_user %>
+                                <%= link_to "編集する",edit_menu_path(@menu) %>
+                                <%= link_to "削除する",menu_path(@menu),method: :delete %>
+                      <% else %>
+                      <% end %>
+                      <div class="text-center">
+                        <p id='lik<%= @menu.id %>'>
+                            <%= render "likes/like", menu: @menu %>
+                        </p>
+                      </div>
+                      <div id="comment_a_">
+                        <%= render "comments/comment", menu: @menu,comment: @comment %>
+                      </div>
+                      <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+                        <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+                        <%= f.submit "送信する" %>
+                      <% end %>
+                  </tbody>
+              </table>
+            </div>
           </div>
       </div>
   </div>
