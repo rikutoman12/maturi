@@ -65,8 +65,10 @@
                     <tr>
                       <th>投稿者</th>
                       <td>
-                        <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
-                        <%= @menu.user.name %>
+                        <%= link_to user_path(@menu.user) do %>
+                          <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
+                          <%= @menu.user.name %>
+                        <% end %>
                       </td>
                     </tr>
                     <tr>

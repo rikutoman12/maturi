@@ -2,14 +2,16 @@
   <h3>【ユーザーの検索結果】検索ワード：<%= @content %></h3>
   <div class="container">
     <div class="row">
-      <table class="table-bordered">
+      <div class="table-bordered">
         <% @records.each do |user| %>
-          <tr>
-            <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100'%></td>
-            <td><%= user.name %></td>
-          </tr>
+          <%= link_to user_path(user) do %>
+
+              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100'%></td>
+              <%= user.name %>
+
+          <% end %>
         <% end %>
-      </table>
+      </div>
     </div>
   </div>
 
