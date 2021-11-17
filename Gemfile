@@ -67,3 +67,4 @@ gem 'rubocop', require: false
 gem 'pry-byebug', group: :development
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
+gem 'geocoder'

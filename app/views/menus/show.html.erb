@@ -5,58 +5,8 @@
      <div class="row">
          <div class="col-7 mt-3">
             <table class="table">
-                <%= attachment_image_tag @menu, :image,:fill, 550, 400 %>
-              <!-- 地図機能 -->
-              <h2>マップ</h2>
-
-              <input id="address" type="textbox" value="Sydney, NSW">
-
-              <input type="button" value="Encode" onclick="codeAddress()">
-                <div id='map'></div>
-
-                <style>
-                  #map{
-                    width: 550px;
-                    height: 400px;
-                  }
-                </style>
-
-                <script>
-
-
-                    let map
-                    let geocoder
-
-                    function initMap(){
-                      // geocoderを初期化
-                      geocoder = new google.maps.Geocoder()
-
-                      map = new google.maps.Map(document.getElementById('map'), {
-                      center: {lat: -34.397, lng: 150.644},
-                      zoom: 8
-                      });
-                    }
-
-                    function codeAddress(){
-                      let inputAddress = document.getElementById('address').value;
-
-                      geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-                        if (status == 'OK') {
-                          map.setCenter(results[0].geometry.location);
-
-                          var marker = new google.maps.Marker({
-                              map: map,
-                              position: results[0].geometry.location
-                          });
-                        } else {
-                          alert('Geocode was not successful for the following reason: ' + status);
-                        }
-                      });
-                    }
-                    </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAW3n-aq5zT45SmJRVDehrkXQX2eMVgAG0&callback=initMap" async defer></script>
-
-
+                <p><%= attachment_image_tag @menu, :image,:fill, 550, 400 %></p>
+                <p><%= link_to "地図で確認する",maps_path %></p>
               </table>
           </div>
             <div class="col-4 mt-3">
@@ -78,8 +28,7 @@
 
                       <th>説明</th>
                       <td><%= @menu. body %></td>
-                  </thead>
-                  <tbody>
+                  </table>
                       <% if @menu.user == current_user %>
                                 <%= link_to "編集する",edit_menu_path(@menu) %>
                                 <%= link_to "削除する",menu_path(@menu),method: :delete %>
@@ -97,8 +46,6 @@
                         <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
                         <%= f.submit "送信する" %>
                       <% end %>
-                  </tbody>
-              </table>
             </div>
           </div>
       </div>
