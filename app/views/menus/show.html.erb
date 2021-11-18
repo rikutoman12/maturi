@@ -6,7 +6,11 @@
          <div class="col-7 mt-3">
             <table class="table">
                 <p><%= attachment_image_tag @menu, :image,:fill, 550, 400 %></p>
-                <p><%= link_to "地図で確認する",maps_path %></p>
+<%#
+
+    <%= @menu.spot.address %
+  <p show__maps{id: "show_map", style: "height: 320px; width: 400px;"}></p>
+                <p><%= link_to "地図で確認する",maps_path %></p> %>
               </table>
           </div>
             <div class="col-4 mt-3">
@@ -29,23 +33,29 @@
                       <th>説明</th>
                       <td><%= @menu. body %></td>
                   </table>
-                      <% if @menu.user == current_user %>
-                                <%= link_to "編集する",edit_menu_path(@menu) %>
-                                <%= link_to "削除する",menu_path(@menu),method: :delete %>
-                      <% else %>
-                      <% end %>
-                      <div class="text-center">
-                        <p id='lik<%= @menu.id %>'>
-                            <%= render "likes/like", menu: @menu %>
-                        </p>
+                    <div class="text-center m-3">
+                        <% if @menu.user == current_user %>
+                                  <%= link_to "編集する",edit_menu_path(@menu),class: "btn btn-success mr-5" %>
+                                  <%= link_to "削除する",menu_path(@menu),method: :delete,class:"btn btn-danger" %>
+                        <% else %>
+                        <% end %>
+                      <div class="m-3">
+                          <p id='lik<%= @menu.id %>'>
+                              <%= render "likes/like", menu: @menu %>
+                          </p>
                       </div>
-                      <div id="comment_a_">
-                        <%= render "comments/comment", menu: @menu,comment: @comment %>
+                      <div class="m-3">
+                        <div id="comment_a_">
+                          <%= render "comments/comment", menu: @menu,comment: @comment %>
+                        </div>
                       </div>
-                      <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-                        <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-                        <%= f.submit "送信する" %>
-                      <% end %>
+                      <div class="m-4">
+                        <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+                          <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+                          <%= f.submit "送信する" %>
+                        <% end %>
+                      </div>
+                    </div>
             </div>
           </div>
       </div>
