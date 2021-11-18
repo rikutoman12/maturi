@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 2021_11_18_023501) do
     t.string "address", null: false
     t.float "latitude", null: false
     t.float "longitude", null: false
-    t.integer "review_id_id", null: false
+    t.integer "menu_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id_id"], name: "index_spots_on_review_id_id"
+    t.index ["menu_id"], name: "index_spots_on_menu_id"
   end
 
   create_table "users", force: :cascade do |t|

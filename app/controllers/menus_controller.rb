@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
   def new
     @menu = Menu.new
-    #@menu.build_spot
+    @menu.build_spot
   end
 
   def create
@@ -18,10 +18,10 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     @comment = Comment.new
-    #@lat = @menu.spot.latitude
-    #@lng = @menu.spot.longitude
-    #gon.lat = @lat
-    #gon.lng = @lng
+    @lat = @menu.spot.latitude
+    @lng = @menu.spot.longitude
+    gon.lat = @lat
+    gon.lng = @lng
   end
 
   def edit
@@ -42,6 +42,6 @@ class MenusController < ApplicationController
 
   private
   def menu_params
-     params.require(:menu).permit(:title,:body,:user_id,:image,:menu_id,:spot_attributes,:address)
+    params.require(:menu).permit(:title,:body,:user_id,:image,:menu_id,spot_attributes: [:address])
   end
 end
