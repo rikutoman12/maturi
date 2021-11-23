@@ -8,9 +8,9 @@
                 <p><%= attachment_image_tag @menu, :image,:fill, 550, 400 %></p>
 
 
-    <%= @menu.spot.address %>
-  <div class="show__maps{id: "show_map", style: "height: 320px; width: 400px;"}"></div>
-                <p><%#= link_to "地図で確認する",maps_path %></p>
+                <%= @menu.spot.address %>
+                <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
+
               </table>
           </div>
             <div class="col-4 mt-3">
