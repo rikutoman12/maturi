@@ -1,21 +1,19 @@
 <div class="container">
-    <div class="text-center mt-5">
+    <div class="text-center m-5">
       <h2>詳細画面</h2>
     </div>
     <div class="row">
-      <div class="col-lg-6-xl-5 col-xs-12 mt-3">
+      <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <table class="table">
-          <p><%= attachment_image_tag @menu, :image,:fill, 1000, 700 %></p>
+          <p><%= attachment_image_tag @menu, :image,:fill, 500, 400 %></p>
         </table>
       </div>
-      <div class="col-lg-5 col-xl-7 col-xs-12 mt-3">
-        <table  class="table table-bordered text-center" >
-          <div class="mb-5">
-            <%= @menu.spot.address %>
-            <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
-          </div>
+      <div class="col-lg-5 col-xl-5 col-xs-12 ">
+        <table  class="table text-center" >
               <tr>
                 <th>投稿者</th>
+              </tr>
+              <tr>
                 <td>
                   <%= link_to user_path(@menu.user) do %>
                     <%= attachment_image_tag @menu.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
@@ -23,27 +21,52 @@
                   <% end %>
                 </td>
               </tr>
+
               <tr>
                 <th>題名</th>
-                  <td><%= @menu.title %></td>
+              </tr>
+              <tr>
+                <td><%= @menu.title %></td>
               </tr>
               <tr>
                 <th>本文</th>
-                  <td><%= @menu.body %></td>
+              </tr>
+              <tr>
+                <td><%= @menu.body %></td>
               </tr>
         </table>
+        <table  class="table text-center" >
+          <tr>
+            <th>
+              <div class="m-3">
+                <p id='lik<%= @menu.id %>'>
+                  <%= render "likes/like", menu: @menu %>
+                </p>
+              </div>
+            </th>
+          </tr>
           <% if @menu.user == current_user %>
+          <tr>
+            <th>
               <%= link_to "編集する",edit_menu_path(@menu),class: "btn btn-warning mr-5 w-50" %>
-              <%= link_to "削除する",menu_path(@menu),method: :delete,class:"btn btn-outline-danger" %>
+              <%= link_to "削除する",menu_path(@menu),method: :delete,class:'btn btn-outline-danger' %>
+            </th>
+          </tr>
           <% else %>
           <% end %>
-          <div class="m-3">
-            <p id='lik<%= @menu.id %>'>
-              <%= render "likes/like", menu: @menu %>
-            </p>
-            </div>
+
+        </table>
       </div>
     </div>
+    </div>
+    <div class="container">
+     <div class="row">
+    <div class="col-lg-5 col-xl-6 col-xs-12">
+            <%= @menu.spot.address %>
+            <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
+          </div>
+
+    <div class="col-lg-5 col-xl-5 col-xs-12 ">
     <div class="m-3">
       <div class="m-3">
         <p id="comment_a_">
@@ -57,4 +80,6 @@
           <% end %>
         </div>
       </div>
+      </div>
+</div>
 </div>

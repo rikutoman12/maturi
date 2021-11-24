@@ -1,4 +1,4 @@
-    <div class="text-center mt-3">
+    <div class="text-center m-5">
       <h2>一覧画面</h2>
     </div>
       <div class=container>
@@ -8,13 +8,13 @@
               <div class="table-bordered" >
                 <% if user_signed_in? %>
                   <%= link_to menu_path(menu) do %>
-                    <%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
+                    <%= attachment_image_tag menu, :image,:fill, 360, 310,fallback: "no_image.jpg",size:'360x310' %>
                     <div class="text-center">
                       <p><%= menu.title %></p>
                   <% end %>
                 <% else %>
                   <%= link_to a_menu_path(menu) do %>
-                    <%= attachment_image_tag menu, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
+                    <%= attachment_image_tag menu, :image,:fill, 360, 310,fallback: "no_image.jpg",size:'360x310' %>
                       <div class="text-center">
                         <p><%= menu.title %></p>
                   <% end %>

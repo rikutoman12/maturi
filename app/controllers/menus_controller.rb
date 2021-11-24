@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
-
+  #indexページとaページ以外は会員以外ログイン出来ない
+  before_action :authenticate_user!,except: [:index,:a]
 
   def new
     @menu = Menu.new
@@ -9,8 +10,11 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.user_id = current_user.id
-    @menu.save
-    redirect_to menus_path
+    if @menu.save
+      redirect_to menus_path
+    else
+      render :new
+    end
   end
 
   def index
