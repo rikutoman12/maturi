@@ -24,6 +24,7 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
     @comment = Comment.new
+    @comments =@menu.comments
     @lat = @menu.spot.latitude
     @lng = @menu.spot.longitude
     gon.lat = @lat

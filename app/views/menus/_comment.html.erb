@@ -1,4 +1,4 @@
-<% menu.comments.each do |comment| %>
+<p id="comment_a_">
   <%= link_to user_path(comment.user) do %>
     <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
     <%= comment.user.name %>
@@ -8,4 +8,4 @@
         <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger' %>
   <% else %>
   <% end %>
-<% end %>
+</p>

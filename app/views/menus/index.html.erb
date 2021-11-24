@@ -8,13 +8,16 @@
               <div class="table-bordered" >
                 <% if user_signed_in? %>
                   <%= link_to menu_path(menu) do %>
-                    <%= attachment_image_tag menu, :image,:fill, 360, 310,fallback: "no_image.jpg",size:'360x310' %>
+
+                    <%= attachment_image_tag menu, :image,:fill, 360, 310, class: 'indexImage' %>
+
+
                     <div class="text-center">
                       <p><%= menu.title %></p>
                   <% end %>
                 <% else %>
                   <%= link_to a_menu_path(menu) do %>
-                    <%= attachment_image_tag menu, :image,:fill, 360, 310,fallback: "no_image.jpg",size:'360x310' %>
+                    <%= attachment_image_tag menu, :image,:fill, 360, 310, class: 'indexImage' %>
                       <div class="text-center">
                         <p><%= menu.title %></p>
                   <% end %>

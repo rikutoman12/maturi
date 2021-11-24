@@ -13,9 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@900&display=swap');
 h2{
   font-family: 'Zen Old Mincho', serif;
+}
+
+@media screen and (max-width: 1000px) {
+ .indexImage {
+   width: 800px !important;
+ }
 }

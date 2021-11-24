@@ -5,7 +5,9 @@
     <div class="row">
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <table class="table">
-          <p><%= attachment_image_tag @menu, :image,:fill, 500, 400 %></p>
+
+            <p><%= attachment_image_tag @menu, :image,:fill, 500, 400 %></p>
+
         </table>
       </div>
       <div class="col-lg-5 col-xl-5 col-xs-12 ">
@@ -69,9 +71,9 @@
     <div class="col-lg-5 col-xl-5 col-xs-12 ">
     <div class="m-3">
       <div class="m-3">
-        <p id="comment_a_">
-          <%= render "comments/comment", menu: @menu,comment: @comment %>
-        </p>
+
+          <%= render partial: "comment", collection: @comments %>
+
       </div>
         <div class="m-4">
           <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
