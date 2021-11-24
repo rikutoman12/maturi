@@ -4,7 +4,18 @@
     </div>
 </div>
 <div class="container">
-   <div class="row">
-     <h2>日本の祭り</h2>
-   </div>
+  <div class="text-center m-5">
+    <h2>日本の祭り</h2>
+      <div class="m-5">
+        <P>
+          このサイトは、全国各地のお祭り情報を発信しあうサイトです
+        </P>
+      </div>
+    <% if user_signed_in? %>
+
+    <% else %>
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-info' %>
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-info' %>
+    <% end %>
+  </div>
 </div>

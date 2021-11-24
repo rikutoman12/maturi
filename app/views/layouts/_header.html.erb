@@ -3,7 +3,8 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <h1>日本の祭り</h1>
+      <h1><%= link_to "日本の祭り" ,root_path %></h1>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -14,27 +15,33 @@
                 <%= form_with url: search_path, method: :get, local: true do |f| %>
                   <%= text_field_tag 'content' %>
                   <%= select_tag 'model', options_for_select({ "ユーザー" => "user", "投稿" => "menu" }) %>
-                  <%= submit_tag '検索' %>
+                  <%= submit_tag '検索',class: 'btn btn-outline-success' %>
                 <% end %>
             </li>
-        <li class="nav-item">
-          <%= link_to ' 一覧画面',menus_path, class: 'nav-link text-dark' %>
+        <li class="nav-item ml-5">
+          <%= link_to ' 一覧画面',menus_path, class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item">
-          <%= link_to  '投稿画面',new_menu_path, class: 'nav-link text-dark' %>
+        <li class="nav-item ml-2">
+          <%= link_to  '投稿画面',new_menu_path, class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'マイページ',user_path(current_user.id), class: 'nav-link text-dark' %>
+        <li class="nav-item ml-2">
+          <%= link_to 'マイページ',user_path(current_user.id), class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+        <li class="nav-item ml-2">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' %>
         </li>
         <% else %>
-        <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+        <li class="nav-item ml-2">
+          <%= link_to ' top画面',root_path,class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+        <li class="nav-item ml-2">
+          <%= link_to ' 一覧画面',menus_path,class: 'btn btn-outline-dark' %>
+        </li>
+        <li class="nav-item ml-2">
+          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-info' %>
+        </li>
+        <li class="nav-item ml-2">
+          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-info' %>
         </li>
         <% end %>
         </ul>

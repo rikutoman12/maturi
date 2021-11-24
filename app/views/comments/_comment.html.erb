@@ -5,7 +5,7 @@
   <% end %>
   <%= comment.comm %>
   <% if comment.user == current_user %>
-        <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class:"btn btn-danger" %>
+        <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger' %>
   <% else %>
   <% end %>
 <% end %>

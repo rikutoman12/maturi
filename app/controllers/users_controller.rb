@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
     #いいね一覧
     before_action :set_user, only: [:likes]
   #いいね一覧
