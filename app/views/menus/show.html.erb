@@ -62,23 +62,22 @@
      <div class="row">
       <div class="col-lg-6 col-xl-6 col-xs-12">
         <div class="text-center">
-          <p>場所:
-            <%= @menu.spot.address %>
-          </p>
+          <h2>地図</h2>
           <div class="show__maps" id="show_map" style="height: 400px; width: 100%;"></div>
         </div>
       </div>
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
-        <div class="m-5">
-
-            <%= render partial: "comment", collection: @comments %>
-
-        </div>
-          <div class="m-5">
-            <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-              <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-              <%= f.submit "送信する" %>
-            <% end %>
+          <div class="text-center">
+            <h2>コメント</h2>
+              <div id="comment_a_">
+               <%= render "menus/comment", menu: @menu,comment: @comment %>
+              </div>
+            <div class="m-5">
+              <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+                <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+                <%= f.submit "送信する" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

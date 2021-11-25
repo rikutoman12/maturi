@@ -6,8 +6,11 @@
     <div class="col-lg-7 col-xl-5 col-xs-12">
       <div class="text-center">
         <p><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",size:'300x300'%></p>
-        <p><%= link_to '編集する',edit_user_path(@user),class: "btn btn-outline-dark w-50"  %></p>
-        <p><%= link_to 'いいね一覧',likes_user_path(@user),class: "btn btn-outline-info w-50" %></p>
+        <% if @user == current_user %>
+          <p><%= link_to '編集する',edit_user_path(@user),class: "btn btn-outline-dark w-50"  %></p>
+          <p><%= link_to 'いいね一覧',likes_user_path(@user),class: "btn btn-outline-info w-50" %></p>
+        <% else %>
+        <% end %>
       </div>
     </div>
     <div class=" col-lg-6 col-xl-6 col-xs-12 ">

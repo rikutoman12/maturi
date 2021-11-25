@@ -1,11 +1,14 @@
-<p id="comment_a_">
-  <%= link_to user_path(comment.user) do %>
-    <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
-    <%= comment.user.name %>
+  <% menu.comments.each do |comment| %>
+<div>
+    <%= link_to user_path(comment.user) do %>
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%>
+      <%= comment.user.name %>
+    <% end %>
+    <%= comment.comm %>
+    <% if comment.user == current_user %>
+          <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger' %>
+    <% else %>
+    <% end %>
+</div>
   <% end %>
-  <%= comment.comm %>
-  <% if comment.user == current_user %>
-        <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger' %>
-  <% else %>
-  <% end %>
-</p>
+
