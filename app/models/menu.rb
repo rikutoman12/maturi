@@ -10,8 +10,8 @@ class Menu < ApplicationRecord
 
       accepts_nested_attributes_for :spot
 
-      validates :title, presence: true
-      validates :body, presence: true
+      validates :title, presence: true, length: {maximum: 20}
+      validates :body, presence: true, length: {maximum: 300}
       validates :image, presence: true
 
    def liked_by?(user)

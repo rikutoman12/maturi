@@ -5,6 +5,7 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @menu.build_spot
+    @user = current_user
   end
 
   def create
@@ -19,10 +20,12 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.all
+    @user = current_user
   end
 
   def show
     @menu = Menu.find(params[:id])
+    @user = current_user
     @comment = Comment.new
     @comments =@menu.comments
     @lat = @menu.spot.latitude
@@ -33,12 +36,16 @@ class MenusController < ApplicationController
 
   def edit
     @menu = Menu.find(params[:id])
+    @user = current_user
   end
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update(menu_params)
-    redirect_to menu_path(@menu)
+    if @menu.update(menu_params)
+      redirect_to menu_path(@menu)
+    else
+      render :edit
+    end
   end
 
   def destroy

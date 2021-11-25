@@ -6,9 +6,9 @@
         <p><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200' %></p>
         <p><%= f.attachment_field :profile_image %></p>
         <h4>名前</h4>
-        <p><%= f.text_field :name,placeholder: "名前を入力",class:'edita m-3' %></p>
+        <p><%= f.text_field :name,placeholder: "名前を入力(10文字以内)",class:'edita m-3' %></p>
         <h4>紹介文</h4>
-        <p><%= f.text_area :introduction,placeholder: "紹介文を入力",class:'edit m-3' %></p>
+        <p><%= f.text_area :introduction,placeholder: "紹介文を入力(100文字以内)",class:'edit m-3' %></p>
         <div class="m-5">`
           <p><%= f.submit '更新する',class: 'btn btn-block btn-warning' %></p>
         </div>

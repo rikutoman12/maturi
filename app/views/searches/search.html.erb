@@ -1,33 +1,39 @@
 <%if @model == 'user' %>
-    <h3>【ユーザーの検索結果】検索ワード：<%= @content %></h3>
+  <div class="text-center m-5">
+    <h2>【ユーザーの検索結果】検索ワード：<%= @content %></h2>
+  </div>
     <div class="container">
       <div class="row">
-        <div class="table-bordered">
-          <% @records.each do |user| %>
-            <%= link_to user_path(user) do %>
-              <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100'%></td>
-              <%= user.name %>
-            <% end %>
+        <% @records.each do |user| %>
+          <div class="table">
+            <tr>
+              <%= link_to user_path(user) do %>
+                <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100'%></th>
+                <th><%= user.name %></th>
+              <% end %>
+            </tr>
           <% end %>
         </div>
       </div>
     </div>
 
 <% else @model == 'menu' %>
-  <h3>【投稿の検索結果】検索ワード：<%= @content %></h3>
-<div class=container>
-  <div class="row">
-    <% @records.each do |menu| %>
-    <div class ="table-bordered m-2">
-      <%= link_to menu_path(menu) do %>
-        <%= attachment_image_tag menu, :image, class: 'indexImage' %>
-        <div class="text-center">
-          <p><%= menu.title %></p>
-        </div>
+  <div class="text-center m-5">
+    <h2>【投稿の検索結果】検索ワード：<%= @content %></h2>
+  </div>
+  <div class=container>
+    <div class="row">
+      <% @records.each do |menu| %>
+      <div class ="table-bordered m-2">
+        <%= link_to menu_path(menu) do %>
+          <%= attachment_image_tag menu, :image, class: 'indexImage' %>
+          <div class="text-center">
+            <p><%= menu.title %></p>
+          </div>
+        <% end %>
+      </div>
       <% end %>
     </div>
-    <% end %>
   </div>
-</div>
 </div>
 <% end %>
