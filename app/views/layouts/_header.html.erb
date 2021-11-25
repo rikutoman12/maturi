@@ -1,14 +1,7 @@
-<div class="text-center">
-  <h1><%= link_to "日本の祭り" ,root_path %></h1>
-</div>
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <% if user_signed_in? %>
-        ようこそ<%= @user.name %>さん
-      <% else %>
-        新規登録またはログインをしてください
-      <% end %>
+      <h1><%= link_to '日本の祭り',root_path, class: "text-decoration-none text-dark" %></h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,10 +20,11 @@
         <li class="nav-item m-2">
           <%= link_to ' 一覧画面',menus_path, class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item m-2">
+        <li class="nav-item m-2 fas fa-pen-square">
+
           <%= link_to  '投稿画面',new_menu_path, class: 'btn btn-outline-dark' %>
         </li>
-        <li class="nav-item m-2">
+        <li class="nav-item m-2 ">
           <%= link_to 'マイページ',user_path(current_user.id), class: 'btn btn-outline-dark' %>
         </li>
         <li class="nav-item m-2">

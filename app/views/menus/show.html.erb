@@ -70,7 +70,9 @@
       </div>
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <div class="m-5">
-              <%= render partial: "comment", collection: @comments %>
+
+            <%= render partial: "comment", collection: @comments %>
+
         </div>
           <div class="m-5">
             <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
