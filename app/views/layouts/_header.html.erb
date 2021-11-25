@@ -5,9 +5,9 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <% if user_signed_in? %>
-      <p>『<%= @user.name %>』さんようこそ</p>
+        <p>『<%= @user.name %>』さんようこそ</p>
       <% else %>
-       ログインまたは新規登録をして下さい
+        ログインまたは新規登録をして下さい
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,6 @@
           <%= link_to ' 一覧画面',menus_path, class: 'btn btn-outline-dark' %>
         </li>
         <li class="nav-item m-2 fas fa-pen-square">
-
           <%= link_to  '投稿画面',new_menu_path, class: 'btn btn-outline-dark' %>
         </li>
         <li class="nav-item m-2 ">

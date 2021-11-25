@@ -67,19 +67,21 @@
         </div>
       </div>
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
-          <div class="text-center">
-            <h2>コメント</h2>
-              <div id="comment_a_">
-               <%= render "menus/comment", menu: @menu,comment: @comment %>
-              </div>
-            <div class="m-5">
-              <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-                <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-              <% end %>
-            </div>
+        <div class="text-center">
+          <h2>コメント</h2>
+        </div>
+        <div class="ml-5">
+          <div id="comment_a_">
+            <%= render "menus/comment", menu: @menu,comment: @comment %>
           </div>
+        </div>
+        <div class="m-5">
+          <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+            <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
 </div>
