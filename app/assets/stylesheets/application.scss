@@ -21,8 +21,26 @@ h2{
   font-family: 'Zen Old Mincho', serif;
 }
 
-@media screen and (max-width: 1000px) {
+
+
+@media screen and (min-width: 480px) {
  .indexImage {
-   width: 800px !important;
+   width: 340px !important;
+   height: 290px !important;
  }
 }
+
+@media screen and (min-width: 990px) {
+ .indexImage {
+   width: 300px !important;
+   height: 250px !important;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+ .indexImage {
+   width: 360px !important;
+   height: 310px !important;
+ }
+}
+
