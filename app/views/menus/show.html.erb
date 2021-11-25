@@ -5,12 +5,19 @@
     <div class="row">
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <table class="table">
-
-            <p><%= attachment_image_tag @menu, :image,:fill, 500, 400 %></p>
-
+          <p><%= attachment_image_tag @menu, :image,class: 'showImage' %></p>
+            <% if @menu.user == current_user %>
+            <div class="text-center">
+              <P>
+                <%= link_to "編集する",edit_menu_path(@menu),class: "btn btn-warning mr-5 w-50" %>
+                <%= link_to "削除する",menu_path(@menu),method: :delete,class:'btn btn-outline-danger' %>
+              </p>
+            </div>
+              <% else %>
+              <% end %>
         </table>
       </div>
-      <div class="col-lg-5 col-xl-5 col-xs-12 ">
+      <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <table  class="table text-center" >
               <tr>
                 <th>投稿者</th>
@@ -47,41 +54,31 @@
               </div>
             </th>
           </tr>
-          <% if @menu.user == current_user %>
-          <tr>
-            <th>
-              <%= link_to "編集する",edit_menu_path(@menu),class: "btn btn-warning mr-5 w-50" %>
-              <%= link_to "削除する",menu_path(@menu),method: :delete,class:'btn btn-outline-danger' %>
-            </th>
-          </tr>
-          <% else %>
-          <% end %>
-
         </table>
       </div>
     </div>
     </div>
     <div class="container">
      <div class="row">
-    <div class="col-lg-5 col-xl-6 col-xs-12">
+      <div class="col-lg-6 col-xl-6 col-xs-12">
+        <div class="text-center">
+          <p>場所:
             <%= @menu.spot.address %>
-            <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
-          </div>
-
-    <div class="col-lg-5 col-xl-5 col-xs-12 ">
-    <div class="m-3">
-      <div class="m-3">
-
-          <%= render partial: "comment", collection: @comments %>
-
-      </div>
-        <div class="m-4">
-          <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-            <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
+          </p>
+          <div class="show__maps" id="show_map" style="height: 400px; width: 100%;"></div>
         </div>
       </div>
+      <div class="col-lg-6 col-xl-6 col-xs-12 ">
+        <div class="m-5">
+              <%= render partial: "comment", collection: @comments %>
+        </div>
+          <div class="m-5">
+            <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
+              <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
+              <%= f.submit "送信する" %>
+            <% end %>
+          </div>
+        </div>
       </div>
-</div>
+    </div>
 </div>

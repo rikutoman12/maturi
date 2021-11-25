@@ -44,3 +44,65 @@ h2{
  }
 }
 
+@media screen and (min-width: 480px) {
+ .showImage {
+   width: 100% !important;
+   height: 100% !important;
+ }
+}
+
+@media screen and (min-width: 990px) {
+ .showImage {
+   width: 100% !important;
+   height: 100% !important;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+ .showImage {
+   width: 100% !important;
+   height: 100% !important;
+ }
+}
+
+@media screen and (min-width: 480px) {
+ .edit {
+   width: 70% !important;
+   height: 100px !important;
+ }
+}
+
+@media screen and (min-width: 990px) {
+ .edit {
+   width: 70% !important;
+   height: 100px !important;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+ .edit {
+   width: 70% !important;
+   height: 100px !important;
+ }
+}
+
+@media screen and (min-width: 480px) {
+ .edita {
+   width: 50% !important;
+   height: 30px !important;
+ }
+}
+
+@media screen and (min-width: 990px) {
+ .edita {
+   width: 50% !important;
+   height: 30px !important;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+ .edita {
+   width: 50% !important;
+   height: 30px !important;
+ }
+}
