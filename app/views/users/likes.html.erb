@@ -1,16 +1,21 @@
+ <div class="text-center m-5">
+      <h2>いいね一覧画面</h2>
+    </div>
 <div class=container>
   <div class="row">
-    <% @liked.each do |like|%>
+    <% @liked.each do |like| %>
       <div class ="m-2">
-         <%= link_to menu_path(like) do %>
-            <%= attachment_image_tag like, :image,:fill, 350, 300,fallback: "no_image.jpg",size:'350x300' %>
+        <div class="table-bordered" >
+            <%= link_to menu_path(like) do %>
+              <%= attachment_image_tag like, :image, class: 'indexImage' %>
               <div class="text-center">
                 <p><%= like.title %></p>
+            <% end %>
+              コメント数：<%= like.comments.count %>
+              いいね数:<%= like.likes.count %>
               </div>
-          <% end %>
-              コメント：<%= like.comments.count %>
-              お気に入り:<%= like.likes.count %>
-      </div>
+          </div>
+        </div>
     <% end %>
   </div>
 </div>
