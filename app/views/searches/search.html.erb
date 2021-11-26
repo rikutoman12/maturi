@@ -3,19 +3,37 @@
     <h2>【ユーザーの検索結果】検索ワード：<%= @content %></h2>
   </div>
     <div class="container">
-      <div class="row">
+  <div class="text-center m-5">
+    <h2>フォロー</h2>
+    <table class='table table-hover table-inverse'>
+      <% if @records.exists? %>
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th>フォロー</th>
+          <th>フォロワー</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
         <% @records.each do |user| %>
-          <div class="table">
-            <tr>
-              <%= link_to user_path(user) do %>
-                <th><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100'%></th>
-                <th><%= user.name %></th>
-              <% end %>
-            </tr>
-          <% end %>
-        </div>
-      </div>
-    </div>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg",size:'50x50'%></td>
+          <td><%= user.name %></td>
+          <td><%= user.followings.count %></td>
+          <td> <%= user.followers.count %></td>
+          <td><%= link_to '詳細画面', user_path(user),class:'btn btn-outline-info' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+      <% else %>
+      <p>ユーザーはいません</p>
+      <% end %>
+    </table>
+  </di>
+</div>
+
 
 <% else @model == 'menu' %>
   <div class="text-center m-5">
