@@ -7,7 +7,7 @@
       :<%= comment.comm %>
       <% if comment.user == current_user %>
         <div class="text-left mt-2">
-          <%= link_to "削除", menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger' %>
+          <%= link_to '  削除する', menu_comment_path(comment.menu,comment), method: :delete, remote: true,class: 'btn btn-outline-danger fas fa-trash-alt py-2' %>
         </div>
       <% else %>
       <% end %>
