@@ -10,6 +10,7 @@ class MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
+    @user = current_user
     @menu.user_id = current_user.id
     if @menu.save
       redirect_to menus_path

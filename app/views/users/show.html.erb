@@ -10,6 +10,11 @@
           <p><%= link_to '  編集する',edit_user_path(@user),class: "btn btn-outline-dark w-50 fas fa-user py-2"  %></p>
           <p><%= link_to '  いいね一覧',likes_user_path(@user),class: "btn btn-outline-info w-50 fas fa-heart py-2" %></p>
         <% else %>
+          <% if current_user.following?(@user) %>
+            <p><%= link_to '  フォロー外す', user_relationship_path(@user.id), method: :delete,class:'btn btn-danger fas fa-thumbs-up py-2' %></p>
+          <% else %>
+            <P><%= link_to '  フォローする', user_relationships_path(@user.id), method: :post,class:'btn btn-primary fas fa-thumbs-up py-2' %></P>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -21,6 +26,16 @@
           </tr>
           <tr>
             <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to user_followings_path(@user) do %>
+                フォロー: <%= @user.followings.count %>
+              <% end %>
+              <%= link_to  user_followers_path(@user)do %>
+                フォロワー: <%= @user.followers.count %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <th>紹介文</th>

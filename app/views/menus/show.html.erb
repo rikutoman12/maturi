@@ -10,7 +10,7 @@
             <div class="text-center">
               <P>
                 <%= link_to "  編集する",edit_menu_path(@menu),class: 'btn btn-warning mr-5 w-50 fas fa-pen-nib py-2' %>
-                <%= link_to "  削除する",menu_path(@menu),method: :delete,class:'btn btn-outline-danger fas fa-trash-alt py-2' %>
+                <%= link_to "  削除する",menu_path(@menu),method: :delete, data: { confirm: '本当に消しますか？' },class:'btn btn-outline-danger fas fa-trash-alt py-2' %>
               </p>
             </div>
               <% else %>
@@ -77,8 +77,8 @@
         </div>
         <div class="m-5">
           <%= form_with(model:[@menu, @comment], remote: true) do |f| %>
-            <%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
+            <p><%= f.text_area :comm, rows:'5',placeholder: "コメントをここに" %></p>
+            <p><%= f.submit '送信する',class: 'btn btn-warning' %></p>
           <% end %>
         </div>
       </div>
