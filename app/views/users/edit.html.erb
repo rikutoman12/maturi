@@ -1,6 +1,7 @@
 <div class="text-center m-5">
+  <h2>編集画面</h2>
   <%= render 'layouts/error', menu: @user %>
-    <div class=" table-bordered m-5">
+    <div class="m-5">
       <%= form_with model: @user, local:true do |f| %>
         <h4>プロフィール画像</h4>
         <p><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200' %></p>
