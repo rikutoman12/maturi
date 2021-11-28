@@ -1,9 +1,9 @@
 <% if menu.liked_by?(current_user) %>
           <%= link_to menu_like_path(menu_id: menu, id: 0), method: :delete, remote: true do %>
-            ♥<%= menu.likes.count %> いいね!
+            <i class="lik fas fa-heart"><%= menu.likes.count %>いいね</i>
           <% end %>
 <% else %>
           <%= link_to menu_likes_path(menu), method: :post, remote: true do %>
-            ♡<%= menu.likes.count %> いいね
+             <i class=" fas fa-heart"><%= menu.likes.count %>いいね</i>
           <% end %>
 <% end %>
