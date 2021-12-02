@@ -6,10 +6,12 @@ class UsersController < ApplicationController
   def likes
    likes = Like.where(user_id: @user.id).pluck(:menu_id)
    @liked = Menu.find(likes)
+   @usera = current_user
   end
 
   def show
   @user = User.find(params[:id])
+  @usera = current_user
   @menus = @user.menus
   end
 
