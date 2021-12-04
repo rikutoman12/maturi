@@ -13,6 +13,10 @@ class MenusController < ApplicationController
     @usera = current_user
     @menu.user_id = current_user.id
     if @menu.save
+        tags = Vision.get_image_data(@menu.image)
+      tags.each do |tag|
+        @menu.tags.create(name: tag)
+      end
       redirect_to menus_path
     else
       render :new

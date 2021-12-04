@@ -6,6 +6,11 @@
       <div class="col-lg-6 col-xl-6 col-xs-12 ">
         <table class="table">
           <p><%= attachment_image_tag @menu, :image,class: 'showImage' %></p>
+            <ul style="display:flex;list-style:none;gap:8px;">
+              <% @menu.tags.each do |tag| %>
+              <li style="padding:2px 6px;background-color: #eeeeee;border-radius: 4px;"><%= tag.name %></li>
+              <% end %>
+            </ul>
             <% if @menu.user == current_user %>
             <div class="text-center">
               <P>
