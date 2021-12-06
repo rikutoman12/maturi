@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-  belongs_to :menu
+  has_many :menus,dependent: :destroy
 end
